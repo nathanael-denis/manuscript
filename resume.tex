@@ -1,0 +1,200 @@
+\emph{This synopsis is provided in compliance with the 1994 law on the use of the French language. It outlines the structure of the thesis and summarizes its chapters and contributions.}
+
+\begin{otherlanguage}{french}
+    
+Ce synopsis est fourni en conformité avec la loi de 1994 relative à l'emploi de la langue française. Il reprend la structure de la thèse et résume les chapitres et les contributions de la thèse. 
+
+
+% Abstract étendu en français
+\section*{Introduction}
+
+L'internet des objets (IdO) est l'interconnexion entre l'Internet et les objets (connectés), et prend une importance croissante avec le nombre de d'objets connectés qui augmente. Le nombre d'appareils actifs est estimé à 15,1 milliards en 2023 (cf. Figure \ref{F_devices_forecast}), se connectant et échangeant des données via différents réseaux de communication~\cite{StatistaIoT2023}. Avec un nombre prévu de dispositifs actifs qui devrait atteindre 29,4 milliards d'ici 2030~\cite{StatistaIoT2023}, les exigences en matière de performance, de sécurité et de respect de la vie privée dans l'internet des objets seront de plus en plus pressantes. De nombreux domaines d'activité seront touchés, notamment la santé, l'industrie, les \emph{smart cities}, la logistique, l'agriculture ou encore la construction (cf. Figure \ref{F_devices_forecast}).
+ 
+\textbf{Risques liés à la sécurité et à la protection de la vie privée.}
+L'internet des objets offre de nouveaux moyens de collecter des données, de les analyser et de prendre des décisions
+pour développer des applications qui permettent de répondre aux besoins des utilisateurs, parfois même de les anticiper. La nature sans précédent de l'IdO a des conséquences sur les données générées, qui sont très détaillées et potentiellement intrusives et en quantité importante. Pour ces raisons, les données sont
+particulièrement à risque pour la vie privée, ce qui nécessite des mécanismes efficaces de protection. En outre, l'IdO présente des
+caractéristiques uniques en raison de l'hétérogénéité entre les objets et de la grande quantité d'objets qu'il peut interconnecter, ce qui en fait un système distribué d'une ampleur sans précédent. Il en résulte plusieurs défis en matière de sécurité, car certains objets connectés, par exemple les capteurs, peuvent ne pas disposer de la puissance de calcul ou du stockage nécessaires pour mettre en oeuvre des solutions basées sur la cryptographie. 
+En outre, les dispositifs IdO peuvent présenter des failles de sécurité dans leur logiciel ou leurs composants matériels. Ces vulnérabilités peuvent être exploitées pour prendre le contrôle des appareils, perturber leur fonctionnement ou lancer des attaques sur d'autres appareils ou réseaux. \cite{Omolara2022}.
+
+\textbf{Réglementation.} Le règlement général sur la protection des données (RGPD) de l'Union Européenne \cite{EUdataregulations2018} introduit plusieurs obligations légales, parmi lesquelles la protection des données par défaut, la gestion du consentement de l'utilisateur et la définition des responsabilités. En effet, les entreprises - en dehors de l'intérêt légitime - doivent demander explicitement à l'utilisateur un consentement clair et explicite avant toute collecte de données. Une entreprise doit pouvoir prouver à tout moment que le traitement des données est toujours effectué de manière légitime, soit en fonction de l'intérêt de l'utilisateur, soit en fonction de son consentement ou soit dans un but légitime pour l'entreprise.
+
+\textbf{Exigences pour un internet des objets sécurisé.}
+En raison des risques propres à l'internet des objets, les exigences pour un internet des objets sûr et préservant la vie privée sont les suivantes. Premièrement, la solution doit prendre en compte \emph{les objets aux capacités restreintes},
+et veiller à ce que les mesures pour parer les menaces pour la sécurité et la vie privée tiennent compte des capacités réelles de l’IdO. Par exemple, les solutions basées sur la cryptographie sont souvent inapplicables aux objets connectés les moins puissants. Deuxièmement, les données étant sensibles du point de vue de la vie privée, il est indispensable pour l'utilisateur d'appliquer un \emph{contrôle d'accès} sur ses données et de \emph{contrôler l'usage} qui en est fait. Troisièmement, pour des raisons de performance, de sécurité et de confidentialité, la décentralisation est un aspect important de l'internet des objets. Les solutions centralisées peuvent espionner les données des utilisateurs~\cite{Qin2020} et être vulnérables aux fuites de données accidentelles ou aux attaques externes~\cite{Qin2020}. Les dénis de service peuvent également être un sujet de préoccupation, car l'infrastructure physique peut être endommagée, par exemple en raison d'un incendie ou d'une catastrophe naturelle~\cite{Ayoub2021}. En outre, la centralisation nuit aux performances, notamment en augmentant les coûts de déploiement et de maintenance~\cite{Salimitari2020}.
+
+\textbf{Utilisation des registres distribués pour l'Internet des Objets.} Les registres distribués (DLTs), en raison de leurs propriétés, constituent une solution prometteuse pour répondre aux exigences de sécurité de l'internet des objets. Les DLTs offrent en effet un certain degré de \emph{décentralisation} et sont \emph{immutables} ce qui est utile pour un large éventail d'applications de sécurité allant de la gestion de la confiance \cite{Liu2023} aux transactions anonymes et sécurisées \cite{Bothra2023}. Les DLTs peuvent également être utilisés pour fournir un contrôle d'accès de manière automatisée et transparente à l'aide de \emph{contrats intelligents} \cite{Bao2023}. Toutefois, les technologies de registres distribués ne sont pas toujours conçues pour répondre aux exigences de l'internet des objets. Les exigences en matière de performance, de sécurité et de confidentialité nécessitent des registres distribués adaptés, qui permettent des transactions anonymes, efficaces et peu coûteuses pour les objets connectés.
+
+\textbf{Contrôle d'usage.} Le contrôle d'usage est une technologie qui permet de contrôler l'utilisation qui est faite des données. Il permet d'accorder ou de refuser l'accès en fonction d'autorisations, d'\emph{obligations}, qui doivent être remplies pour obtenir l'accès, et enfin de \emph{conditions} liées à l'état du système. En conséquence, le contrôle d'usage est une technologie d'intérêt pour la vie privée des utilisateurs puisqu'ils peuvent décider qui peut accéder à leurs données et comment celles-ci sont utilisées. Mais le problème de l’utilisation conjointe des registres distribués et du contrôle d’usage se pose. Des travaux existants proposent d'intégrer le contrôle d'usage dans des \emph{blockchains} privées, mais ce type de \emph{blockchain} n'est pas adapté aux cas d'usage impliquant un très grand nombre d'objets.
+
+\textbf{Objectifs de recherche.} Ayant identifié les problématiques de performance, de sécurité, et de protection de la vie privée ainsi que des technologies pouvant potentiellement y répondre, nous pouvons formuler des objectifs de recherche qui forment la ligne conductrice des travaux de recherche présentés dans cette thèse. Les objectifs de recherche sont les suivants:
+
+\begin{itemize}
+    \item \emph{Objectif~1}: Permettre des transactions gratuites ou à très bas coût, respectueuse de la vie privée pour répondre aux besoins de l'internet des objets;
+    \item \emph{Objectif~2}: Identifier les registres distribués adaptés aux contraintes de l'IdO;
+    \item \emph{Objectif~3}: Mettre en place une méthodologie pour intégrer efficacement le contrôle d'usage et les registres distribués adaptés;
+    \item \emph{Objectif~4}: Identifier les concepts utiles à l'internet des objets et qui ne sont pas traités dans l'état de l'art du formalisme du contrôle d'usage dans les systèmes distribués.
+\end{itemize}
+
+En plus de ces quatre objectifs, nous ajoutons d'autres objectifs méthodologiques, pour la validation des résultats présentés:
+
+\begin{itemize}
+    \item \emph{Objectif~5}: Analyser les aspects sécurité et protection de la vie privée des méthodes proposées, à l'aide d'une évaluation des menaces pour la sécurité et la vie privée;
+    \item \emph{Objectif~6}: Valider la faisabilité des méthodes proposées à l'aide d'une preuve de concept.
+\end{itemize}
+
+Dans ce travail de thèse, les solutions proposées prendront également en compte que les scénarios de l'internet des objets peuvent impliquer de très nombreux objets (\emph{large-scale networks}), créant des problématiques de passage à l'échelle qui limitent l'utilisation de certaines technologies existantes.
+ 
+\textbf{Contributions.} Pour répondre à ces objectifs de recherche, ce travail de thèse propose les contributions suivantes:
+
+\begin{itemize}
+    \item un \emph{framework} pour répondre aux besoins
+    de vie privée, de sécurité et de performances de l'internet des objets
+    (chapitre~\ref{C_solving_trilemma}). Le \emph{framework} s'appuie en particulier sur la technologie IOTA, un registre distribué utilisant un graphe orienté acyclique pour effectuer des transactions sans frais, au lieu d'une \emph{blockchain} (\emph{Objectif~1} et \emph{Objectif~2});
+    \item une méthode d'intégration du contrôle d'usage avec les registres distribués (chapitre~\ref{C_integration}). Les registres appropriés sont identifiés en fonction des paramètres adaptés, et une preuve de concept est mise en place pour évaluer les performances (\emph{Objectif~3});
+    \item une extension du modèle pour le contrôle d'usage et du flux d'information décentralisé (DIFC) dans les systèmes distribués (chapitre~\ref{C_formalism}), en introduisant une politique définie conjointement sur les données personnelles collectives et la disponibilité des systèmes présents dans le réseau (\emph{Objectif~4}).
+\end{itemize}
+
+\section*{Contexte scientifique} 
+
+Cette partie introduit toutes les technologies utiles à la compréhension de ce document, ainsi que leurs caractéristiques en termes de performance et de protection de la vie privée quand cela est nécessaire. Nous résumons rapidement cette partie en présentant de manière succincte les technologies en question.
+
+\textbf{Le contrôle d'usage.} 
+Le contrôle d'usage est une extension du contrôle d'accès, décrivant la manière dont les données peuvent être utilisées après l'accès initial. Il a été proposé pour la première fois par Sandhu et Park sous la forme du modèle \emph{UCON}~\cite{Park2004}. Ce modèle introduit la \emph{mutabilité} des attributs, ainsi que de nouveaux facteurs de décision décrits par le modèle ABC (Figure \ref{F_ABC_model}) : \emph{Autorisations, oBligations, Conditions}. Les \emph{attributs mutables} sont modifiés à la suite d'un accès, tandis que les \emph{attributs immutables} sont modifiés à la suite d'une action administrative. Les obligations sont des conditions à remplir par le sujet pour se voir accorder l'accès. Les conditions sont des exigences indépendantes du sujet et liées au système, par exemple l'heure. Les attributs étant mutables, les obligations et les conditions peuvent
+être effectuées avant ou pendant l'accès.
+
+
+Si le contrôle d'usage impose des limites sur la façon dont les données sont utilisées, il ne fournit aucune garantie sur la propagation de l'information. L'utilisation d'un mécanisme dédié de contrôle de flux des données (IFC) est crucial pour la sécurité de l'information afin de prévenir les fuites de données. Un tel mécanisme est utile aussi pour le contrôle d'usage, car les informations peuvent potentiellement être diffusées en dehors de la zone de surveillance du système de contrôle. Dans les systèmes de contrôle d'usage modernes, ces deux technologies de contrôle de flux et de contrôle d’usage sont donc utilisées conjointement.
+
+\textbf{Les registres distribués.} Les registres distribués (DLT) constituent la deuxième technologie d'intérêt pour ces travaux de thèse. Leur caractère distribué est bénéfique pour les performances et la sécurité du réseau, et ils sont aussi étudiés de manière active dans la littérature scientifique pour la protection de la vie privée des utilisateurs \cite{Rifi2017, Zhaofeng2021, Goyat2022, Rajasekaran2023, Bao2023}.
+
+Les registres distribués se distinguent notamment par une \emph{méthode de consensus}, qui impacte significativement les performances et la sécurité du réseau. Les deux méthodes de consensus principales sont la preuve de travail (PoW) utilisée dans la \emph{blockchain} Bitcoin, et la preuve d'enjeu (PoS) utilisée dans son principal concurrent Ethereum. La preuve de travail s'appuie sur un défi calculatoire difficile, dont le gagnant obtient le droit d'écrire le prochain bloc dans le réseau et est récompensé financièrement pour ses efforts. Ce processus, malgré ses apports en termes de sécurité, est très gourmand en ressources et consomme beaucoup d'énergie (voir les illustrations \ref{F_btc_visa_energy} et \ref{F_countries_btc_energy}). La preuve d'enjeu cherche à atténuer ce coût en utilisant un enjeu économique sous la forme d'un montant en cryptomonnaie, qui augmente proportionnellement les chances d'être choisi comme mineur. En plus des variantes de la preuve d'enjeu - preuve d'enjeu déléguée, preuve d'enjeu liquide...-, il existe aussi des méthodes de consensus pour les \emph{blockchains} dites privées, dont l'accès au registre est contrôlé. Les deux méthodes principales sont la preuve du temps écoulé (PoET) et la tolérance pratique aux fautes byzantines (PBFT). Dans un réseau basé sur la méthode PoET, chaque noeud participant du réseau doit attendre une période de temps aléatoire, et le premier à terminer est désigné comme mineur. PBFT est un algorithme de consensus introduit à la fin des années 90 par Barbara Liskov et Miguel Castro \cite{Castro1999} conçu pour fonctionner efficacement dans les systèmes asynchrones. Le consensus sur les transactions est obtenu via des échanges nombreux entre les noeuds, ce qui fait que cette méthode ne passe pas à l'échelle et ne peut être utilisée dans des \emph{blockchains} publiques.
+
+Si les \emph{blockchains} sont les exemples les plus connus de registres distribués pour les cryptomonnaies, la notion de DLT est plus large et inclut plusieurs autres technologies d'intérêt.
+Tout d'abord, un registre distribué peut être complètement déconnecté de la notion de cryptomonnaie, comme par exemple les bases de données distribuées. Certaines cryptomonnaies n'utilisent pas de \emph{blockchains} pour leur graphe de transactions, mais des structures mathématiques différentes. Les alternatives les plus utilisées dans les cryptomonnaies sont les graphes orientés acycliques (DAG) et les graphes de hachage (\emph{hashgraphs}).
+
+\textbf{Protection de la vie privée dans les registres distribués.}
+ Les \emph{blockchains} publiques ne demandent pas d'informations d'identification pour effectuer une transaction, et un pseudonyme est utilisé. Cependant, l'accès aux transactions et à leur contenu n'est pas limité. Les transactions
+révèlent des informations sur les différentes parties impliquées et créent des risques d'inférence.
+Des tiers intéressés collectent et analysent automatiquement ces informations, pour plusieurs raisons incluant l'analyse à des fins judiciaires \cite{Harrigan2016}. Par défaut, les \emph{blockchains} publiques n'offrent que le pseudonymat, ou l'anonymat si et seulement si le lien entre le pseudonyme et l'identité réelle de l'utilisateur n'est pas possible. Cependant, plusieurs comportements
+facilitent considérablement la ré-identification, notamment la réutilisation d'une même adresse pour effectuer plusieurs transactions.
+
+Des méthodes existent pour protéger l'identité des utilisateurs. L'une des plus utilisées est le mélangeur de cryptomonnaie. Les mélangeurs de cryptomonnaie permettent d'empêcher le traçage des utilisateurs qui envoient et ceux qui reçoivent de la cryptomonnaie.
+La facilité d'intégrer les nouveaux
+utilisateurs et la compatibilité avec les technologies existantes sans modification sont des caractéristiques attrayantes de ce service. Bien qu'utiles pour la préservation de la vie privée, les mélangeurs de cryptomonnaie sont confrontés à plusieurs défis techniques tels que
+la décentralisation et le coût du service, car le mélangeur génère lui-même des nouvelles transactions pour lesquelles il doit souvent payer. Le mélangeur s'appuie souvent sur un mécanisme de \emph{merge avoidance}, en séparant la transaction en plusieurs sous-transactions pour éviter d'inférer le motif de la transaction.
+
+\textbf{Performances des registres distribués.}
+Comme les méthodes de consensus sont gourmandes en ressources et en temps, les performances des \emph{blockchains} et des registres distribués sont beaucoup étudiées dans la littérature scientifique \cite{Brotsis2021, Fan2021, Chen2022, Okegbile2022}. 
+Les performances constituent la base utilisée pour comparer les méthodes de consensus entre elles et suggérer ou exclure l'utilisation d'une méthode de consensus pour un cas d'usage précis. Les critères pour mesurer les performances sont les suivants. Le \emph{débit}, souvent mesuré en transactions par secondes, et qui traduit la capacité du réseau à traiter beaucoup de transactions simultanément. La \emph{latence}, qui est la mesure du temps nécessaire à la validation d'une transaction. Le \emph{passage à l'échelle}, une notion qui peut s'exprimer de plusieurs manières - en termes de nombre d'objets connectés, de transactions simultanées...- et qui est très liée à la décentralisation. Finalement, les \emph{surcoûts} liés au stockage ou à la \emph{communication} entre les noeuds du réseau, qui impactent la taille du registre comme la possibilité de passer à l'échelle. 
+
+\section*{Infrastructure logicielle pour répondre aux besoins de l'IdO}
+
+Dans ce chapitre qui correspond à la première contribution, un \emph{framework} est proposé pour permettre des micro-transactions dans l'internet des objets (Objectif~1) respectant les besoins de performance, de sécurité et de respect de la vie privée. En particulier, le \emph{framework} permet de contrôler l'accès aux dispositifs physiques et l'usage des données, n'impose pas de frais de transaction, pour permettre les micro-transactions et est respectueux de la vie privée pour les deux participants à la transaction.
+
+Le cadre proposé se compose des éléments suivants (cf. ~Figure~\ref{F_framework_IFIP}) :
+
+\begin{enumerate}
+\item La technologie IOTA, en tant que registre distribué approprié pour répondre aux exigences de performance de l'IdO et au besoin de transactions sans frais ;
+\item IOTA Access, un logiciel open-source utilisé pour contrôler l'accès aux appareils de l'IdO. Il est développé par la Fondation IOTA pour compléter la technologie IOTA; 
+\item un système de contrôle d'usage, pour contrôler l'utilisation et la dissémination des données dans le système. Le système de contrôle d'usage repose sur l'exécution d'un environnement de confiance (TEE) présent sur l'appareil de l'utilisateur contrôlé;
+\item un mélangeur de cryptomonnaie décentralisé couplé au \emph{merge avoidance} (cf. section \ref{ss_obfuscation_coin_mixing_merge_avoidance}), pour l'obfuscation des transactions et améliorer la vie privée des utilisateurs.
+\end{enumerate}
+
+\textbf{Intérêt de l'utilisation de IOTA.} IOTA est un registre distribué utilisant un graphe orienté acyclique plutôt qu'une \emph{blockchain} pour son graphe de transactions. Il a été conçu pour l'internet des objets \cite{Popov2017} et possède de nombreux atouts pour répondre aux besoins en termes de performance. 
+D'abord, IOTA ne possède pas de \emph{mineurs} responsables de la création des nouvelles transactions, qui est déléguée aux utilisateurs eux-mêmes. Cela permet d'avoir des transactions sans frais, et un débit plus élevé grâce à la structure du graphe qui permet des insertions simultanées à plusieurs endroits du graphe, contrairement aux \emph{blockchains}. IOTA permet aussi aux objets avec des contraintes sur les capacités de calcul ou de stockage de contribuer au réseau, en partie en déléguant certaines opérations. Il faut noter que dans l'état actuel (IOTA 1.0), une partie de ces avantages ne sont pas encore visibles en pratique, notamment à cause de la présence du noeud \emph{coordinateur}. Ce composant centralisé est chargé de valider les transactions régulièrement en posant des jalons (\emph{milestones} en anglais), mais réduit le débit et est un point de défaillance unique qui permet à la fondation IOTA d'arrêter le réseau si elle le souhaite.
+
+\textbf{Validation de la solution.} Conformément aux objectifs de recherche \emph{Objectif~5} et \emph{Objectif~6}, le \emph{framework} proposé est validé par:
+
+\begin{itemize}
+    % \item une analyse de performance pour démontrer la faisabilité de la solution, en s'appuyant sur une preuve de concept. Les tests prennent en compte des optimisations en utilisant le processus d'intégration décrit dans le chapitre~\ref{C_integration};
+    \item une analyse des risques sur la vie privée des utilisateurs, en s'appuyant sur un cas d'usage de location de voitures entre particuliers. La méthode d'analyse de risques LINDDUN \cite{Wuyts2015} est utilisée pour identifier précisément les risques sur les données personnelles dans le cadre de ce scénario;
+    \item une analyse des risques de sécurité, également dans le cadre du scénario sur la location de voitures, en utilisant la méthode STRIDE \cite{Howard2006} 
+\end{itemize}
+
+Ces analyses montrent que le nécessaire pour faire des transactions et prendre des décisions vis-a-vis des politiques de contrôle d'usage est réaliste, et que les outils utilisés pour parer les menaces de sécurité et de vie privée sont efficaces quand ils sont utilisés conjointement.
+
+\section*{Intégration du contrôle d'usage et des registres distribués}
+
+Le chapitre~\ref{C_integration} propose d'intégrer finement le système de contrôle d'usage dans les technologies de registres distribués. Le but de cette intégration est de faire fonctionner les deux technologies - le contrôle d'usage et les registres distribués - en synergie pour augmenter leur efficacité. Intuitivement, les registres distribués gagnent à avoir plus de noeuds dans le réseau, car cela augmente le nombre d'utilisateurs qui vérifient la validité des transactions. Dans le cas des registres basés sur un DAG, augmenter le nombre d'utilisateurs augmente souvent en conséquence le nombre de transactions, ce qui permet en retour d'augmenter le débit.
+Le système de contrôle d'usage dispose en contrepartie d'une version locale du registre de transactions, sur lequel il peut s'appuyer pour traiter les politiques.
+Des travaux existants \cite{Khan2020, Shi2021, Zhaofeng2021} proposent d'utiliser les registres distribués avec le contrôle d'usage, mais: 
+\begin{itemize}
+    \item ils se limitent aux \emph{blockchains} privées et excluent les registres publics, ce qui empêche son utilisation pour les cas d'usage IdO impliquant un grand nombre d'objets;
+    \item aucun travail de généralisation de ce processus d'intégration a été proposé, ce qui ne permet pas de voir quels sont les registres appropriés pour les différents les cas d'usage.
+\end{itemize}
+
+\textbf{Identification des technologies adaptées.} Cette contribution propose donc de différencier les registres entre eux en utilisant plusieurs critères: la méthode de consensus, la méthode de construction du graphe de transactions et la méthode utilisée pour inciter les utilisateurs à participer au fonctionnement du réseau. Ces trois critères ont un impact sur deux paramètres, la \emph{décentralisation} et l'\emph{équitabilité}, qui garantit que tous les objets y compris ceux avec des capacités limitées peuvent contribuer au réseau de manière significative, typiquement dans le cadre d'une élection. L'analyse des différents types de registre conduit à la conclusion que les \emph{blockchains} privées et les registres basés sur des DAGs (privés et publics) sont particulièrement adaptés pour intégrer le contrôle d'usage à leur réseau.
+
+\textbf{Analyse de performance.} Pour valider le fait que l'intégration a des effets positifs sur le contrôle d'usage, et conformément à l'objectif de recherche \emph{Objectif~6}, les gains en performance sont évalués dans le cadre d'une preuve de concept. Contrairement aux tests de performance effectués dans le cadre de la première contribution (Chapitre~\ref{C_solving_trilemma}), l'accent est mis dans cette partie sur la \emph{reproductibilité des tests}. Pour cela, les tests sont réalisés sur un réseau IOTA privé, en faisant varier le nombre de noeuds (de 3 à 10 noeuds). Les tests mesurent la différence entre le temps mis pour valider et transmettre une transaction au reste du réseau dans les deux configurations - avec ou sans l'intégration du contrôle d'usage en tant que noeud du réseau. Les tests montrent que l'intégration diminue jusqu'à 94\% (3 noeuds) le temps nécessaire pour transmettre une transaction valide sur le réseau, accélérant grandement les prises de décisions liées aux paiements. 
+
+\textbf{Analyse de risques sur la vie privée.} Contrairement à la \emph{Contribution 1}, l'analyse de privacy est ici conduite non pas pour un scénario spécifique, mais dans un cadre générique de transactions pour acheter des données. L'analyse de risques est faite en utilisant LINDDUN \cite{Wuyts2015}. L'analyse permet de montrer que dans un cas général, le contrôle d'usage seul permet de parer 4 des 7 familles de menace de LINDDUN, et partiellement pour 6 sur 7 d'entre elles. Seule la non-répudiation n'est pas fournie, c'est-à-dire la capacité de l'utilisateur à nier des actions qui lui sont attribuées. C'est un résultat attendu, car le contrôle d'usage surveille étroitement les actions de l'utilisateur des données pour pouvoir empêcher les actions interdites. 
+
+\section*{Formalisme du contrôle d'usage dans les registres distribués}
+
+Un modèle formel du contrôle d'usage des données peut aider à garantir que les objectifs de sécurité et de confidentialité du système sont atteints en fournissant une spécification claire des politiques. Bien que cette modélisation soit régulièrement proposée dans l'état de l'art dans des contextes centralisés \cite{Pretschner2011, Kelbert2013,Fromm2020}, elle est moins souvent abordée dans des contextes distribués, pourtant plus adaptés à l'internet des objets. En particulier, les modèles actuels ne prennent pas en compte la possibilité pour les utilisateurs de définir des politiques sans passer par le système distribué lui-même, ni les aspects spécifiques aux réseaux IdO, où des sous-parties du réseau peuvent être momentanément déconnectées.
+
+\textbf{Contrôle de flux décentralisé.} Le contrôle de flux décentralisé (DIFC) \cite{Myers1997} permet à des utilisateurs de définir des politiques sur la dissémination des données en appliquant directement des \emph{étiquettes} sur les données, mais aussi les conteneurs des données eux-mêmes. Cela permet de ne pas passer par une entité centrale, qui peut être corrompue ou neutralisée dans le cadre d'un déni de service. Cependant, le contrôle de flux n'est pas très utilisé en pratique à cause du surcoût en développement qu'il entraîne. Cependant, cela a changé en raison de l'évolution des pratiques de développement, incluant notamment la télémétrie et la journalisation des événements, qui permettent d'utiliser DIFC dans la plupart des systèmes \cite{Liu2022}. Il est donc devenu intéressant d'intégrer DIFC dans les modèles de contrôle d'usage pour les systèmes distribués.
+
+\textbf{Contribution aux modèles actuels.} Dans le but d'intégrer DIFC au modèle de contrôle d'usage dans les systèmes distribués, il est nécessaire d'intégrer les éléments suivants dans le modèle:
+
+\begin{itemize}
+    \item des composants du système de contrôle d'usage dédiés au traitement du contrôle de flux décentralisé, à savoir un composant pour l'étiquetage, la conversion des étiquettes en autorisations, et un composant de pré-traitement qui détermine si un élément doit être étiqueté ou non;
+    \item des fonctions définies formellement, qui permettent de récupérer les étiquettes associées aux données et à leur conteneurs, et de détecter les conflits qui peuvent survenir entre ces éléments;
+\end{itemize}
+
+En plus des éléments DIFC, nous introduisons dans la contribution des éléments liés à l'état des sous-parties du système distribué. En particulier, certaines parties peuvent se déconnecter, être indisponibles si le réseau est instable, etc. Des fonctions sont formalisées pour déterminer si une partie précise du système est accessible, et par extension, si une donnée ou un conteneur est présent dans un système actuellement accessible.
+
+\section*{Conclusion}
+
+Le chapitre de conclusion récapitule les contributions de cette thèse, avant d'introduire les limites des travaux présentés, notamment en ce qui concerne les technologies clés utilisées dans les différentes contributions. Enfin, différentes pistes de recherche sont proposées.
+
+\textbf{Limites des travaux.}
+Nous identifions plusieurs limites dans nos travaux de thèse:
+
+\begin{itemize}
+    \item des limites liées à l'utilisation de IOTA, qui est une technologie encore en développement. En particulier, la version actuelle de IOTA (1.0) repose encore sur un mécanisme centralisé de contrôle, le coordinateur. Cela limite le débit de transaction, et sa neutralisation ou son interruption provoquent l'arrêt du réseau; 
+    \item la capacité à passer à l'échelle, importante dans le cadre de cette thèse où il y a potentiellement beaucoup d'objets dans le réseau, n'est pas simple à évaluer intégralement. Si le débit de transactions est un moyen d'évaluer cette capacité à passer à l'échelle, d'autres aspects existent pour mesurer cette capacité, comme le nombre de machines connectées au noeud, la taille du registre...
+    \item des limites liées à l'adoption du contrôle d'usage dans les systèmes. Définir les politiques de contrôle d'usage nécessite d'établir des obligations et des conditions avec différents niveaux de temporalité, ce qui est complexe. Il faut parfois interagir avec d'autres mécanismes existants de contrôle d'accès ce qui limite l'utilisation du contrôle d'usage dans les systèmes existants;
+    \item des aspects pratiques du contrôle d'usage, qui peuvent avoir un impact significatif sur les performances et être limitants dans certains scénarios, en particulier si les objets à contrôler sont nombreux. Par ailleurs, le contrôle d'usage est partiellement déployé sur les objets contrôlés (cf. Section \ref{ss_ucon_architecture}). Cela peut créer des problèmes de vie privée pour les utilisateurs accédant aux données, car le contrôle nécessite d'intercepter les processus y compris au niveau réseau. Souvent, un \emph{Trusted Execution Environment} est déployé pour pouvoir contrôler l'utilisateur en conservant l'intégrité et la confidentialité des données, mais le TEE lui-même peut être vulnérable.
+\end{itemize}
+
+Pour compléter les travaux fournis dans le cadre du doctorat, des pistes de recherche ont été identifiées, pour renforcer la validité des solutions proposées.
+
+\textbf{Validation du modèle formel.} Les extensions proposées pour compléter le modèle de contrôle d'usage dans les registres distribués pourraient faire l'objet de validation. La validation peut être expérimentale pour vérifier que les fonctions (pour déterminer l'étiquette DIFC, le statut de la connexion des parties du système...) ne sont pas trop coûteuses et donc inapplicables en pratique. Il est aussi possible de faire de la vérification de modèle pour s'assurer que les fonctions sont correctes du point de vue logique. Étant donnée la nature distribuée du modèle proposée, TLA$^{+}$ \cite{Lamport1992} est un outil qui semble particulièrement adapté pour traduire le modèle théorique \cite{Lazouski2010}. TLA$^{+}$ dispose notamment d'un outil de vérification de modèle intégré, \emph{TLC}.
+
+Les travaux de recherche présentés dans cette thèse ouvrent par ailleurs plusieurs perspectives. En particulier, les propriétés des DAGs sont intéressantes pour un ensemble de sujets de recherche orthogonaux liés à l'internet des objets, que nous présentons maintenant.
+
+\textbf{Génération de politiques XACML pour les tests.} Les contributions de cette thèse s'appuient sur l'évaluation de politiques de contrôle d'usage, écrites dans le langage XACML.
+Générer des politiques pour les tests est difficile, mais nécessaire à l'évaluation des performances du système de contrôle d'usage. 
+Ensuite, traduire les politiques de haut niveau en politiques XACML est également fastidieux.
+ 
+Plusieurs travaux dans la littérature ont développé des outils pour rendre la génération des politiques XACML plus conviviale. Bertolino \emph{et al.} a proposé deux outils différents pour dériver les requêtes XACML permettant la génération automatique de requêtes XACML pour les tests de politiques \cite{Bertolino2012}. 
+De même, Xu \emph{et al.} utilisent des \emph{tests basés sur la mutation} où les demandes d'accès sont dérivées d'une politique originale \cite{Xu2020}. Les travaux futurs pourraient inclure des tests basés sur une dérivation rigoureuse de la politique.
+
+ \textbf{L'apprentissage fédéré basé sur IOTA.} L'apprentissage fédéré est une méthode d'apprentissage automatique qui distribue l'apprentissage sur les objets sans partager les données personnelles avec le serveur central. Dans l'apprentissage fédéré, le serveur central ne fait que l'orchestration du processus d'apprentissage, et seules les mises à jour des paramètres du modèle sont partagées entre les objets et l'orchestrateur central. Le serveur central n'a pas besoin d'accéder aux données réelles pour entraîner son modèle, ce qui réduit les risques pour la vie privée.
+ 
+ L'apprentissage fédéré étant distribué par nature, son utilisation conjointe avec la technologie \emph{blockchain} a fait l'objet d'une attention particulière, comme le montrent des travaux récents \cite{Dongkun2021, Lee2021, Issa2023, Qu2023, Qammar2023}. Les \emph{blockchains} sont utilisées dans l'apprentissage fédéré pour les raisons suivantes :
+ \begin{itemize}
+     \item L'utilisation des contrats intelligents pour coordonner l'apprentissage fédéré. Les contrats intelligents peuvent valider les contributions des noeuds (pour empêcher les manipulations des noeuds malveillants), calculer le modèle global ou enregistrer les performances des noeuds \cite{Issa2023};
+     \item L'amélioration de la sécurité et de la confidentialité en supprimant le serveur central \cite{Issa2023};
+ \end{itemize}
+ 
+ Cependant, l'apprentissage fédéré utilisant les \emph{blockchains} doit encore résoudre plusieurs défis pour préserver la vie privée et gérer les contraintes de l'internet des objets \cite{Issa2023}.
+ Les registres distribués basés sur les DAGs ne sont pas mentionnés dans la littérature comme une solution potentiellement plus performante que les \emph{blockchains} pour l'apprentissage fédéré \cite{Issa2023, Qu2023}. IOTA pourrait être mis à profit car il peut intégrer efficacement les objets connectés dans son réseau, ce qui n'est pas le cas des \emph{blockchains} en général. Les résultats de ce travail de thèse pourraient donc également être étendus à l'apprentissage fédéré.
+
+\textbf{Identité numérique auto-souveraine basée sur IOTA.} L'identité auto-souveraine ou SSI est une approche dans laquelle les sujets contrôlent pleinement leurs propres identités numériques \cite{Fedrecheski2020} contrairement aux solutions actuelles d'identité
+numérique qui sont centralisées et posent des problèmes de confidentialité et de sécurité \cite{Fedrecheski2020}.
+
+Les identités souveraines présentent plusieurs avantages pour l'internet des objets. Les identités des utilisateurs et de leurs appareils sont stockées localement et sont divulguées de manière sélective par les utilisateurs, ce qui protège mieux la vie privée. La suppression de la nécessité d'un tiers de confiance pour gérer les identités accroît la décentralisation du réseau et supprime un point de défaillance unique du réseau \cite{Fedrecheski2020}. 
+
+Pourtant, l'adoption du paradigme SSI dans les réseaux IdO se heurte à plusieurs problèmes, techniques et non techniques, comme la standardisation. 
+Les aspects techniques sont notamment les suivants :
+\begin{itemize}
+    \item \emph{objets avec capacités restreintes}: les objets doivent être en mesure de mettre en place les outils cryptographiques et de gérer les communications;
+    \item \emph{traçabilité}: un suivi global n'est souvent pas possible sans une autorité centrale.
+\end{itemize}
+
+La technologie IOTA, en raison de sa capacité à intégrer des dispositifs contraints dans son consensus et son réseau, est une technologie prometteuse pour répondre à la première limite technique. En particulier, IOTA offre la possibilité de déployer des noeuds pour les utilisateurs. Des travaux existants ont proposé d'utiliser IOTA comme base d'un SSI \cite{Gebresilassie2020} et IOTA lui-même possède un module pour générer des identités décentralisées \cite{IOTA2020}. Gebresilassie \emph{et al.} proposent d’utiliser les DAGs comme éléments de base d’un système de gestion des identités des noeuds du DAG, en particulier pour gérer la réputation des noeuds. Cependant, la contribution reste très évasive sur de nombreux aspects techniques clés comme les conditions d’enrôlement des noeuds dans le SSI, les propriétés de sécurité souhaitées, le contenu des transactions, l’analyse de sécurité, ce qui laisse encore beaucoup d’inconnues avant une possible mise en oeuvre au sein d’une preuve de concept.
+
+\end{otherlanguage}

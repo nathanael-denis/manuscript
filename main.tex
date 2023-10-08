@@ -1,0 +1,297 @@
+\documentclass[a4paper,11pt,pagebackref=true]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}     % Support des césures comportant des accents
+\usepackage{calc}            % Manipulation facile des tailles
+\usepackage{graphicx}        % Figures basiques
+\usepackage{lmodern}         % Meilleure police
+\usepackage[utf8]{inputenc}  % Support de l'encodage utf-8
+\usepackage[french, english]{babel}   % Français dans les titres, le sommaire etc.
+\usepackage{bookmark}        % Gestion avancées des hyperliens
+\usepackage{longtable}       % Tableaux sur plusieurs pages
+\usepackage{amsmath,amssymb,amsfonts} % Pour mathématiques et commentaires
+\usepackage{adjustbox} % Gestion automatique de la taille des tableaux
+\usepackage[tikz]{bclogo}
+\usepackage{multirow} % Tableaux avec plusieurs lignes
+\usepackage{hyperref} % Pour hyperliens
+
+% Figures et sous figures
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Pour les sommaires de début de chapitre 
+\usepackage{minitoc}
+
+% Casse les citations qui déborde (cf. /breakcites/breakcites.pdf)
+\usepackage{breakcites/breakcites}
+\makeatletter
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{fancyvrb} %permet de définir des environnements verbatim, utilisé pour
+                      % la définition des commentaires ci-dessous
+\newcommand{\ygg@basicalert}[2]{\fbox{\bfseries\sffamily\scriptsize#1}{
+\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}}
+% Lignes suivantes pour enlever ou remettre les commentaires
+\newcommand{\annote}[2]{\ygg@basicalert{\textsc{#1}}{\textcolor{red}{#2}}}
+%\newcommand{\annote}[2]{}
+\newcommand{\nathanael}[1]{\annote{Nathanaël}{#1}}
+\newcommand{\sophie}[1]{\annote{Sophie}{#1}}
+\newcommand{\maryline}[1]{\annote{Maryline}{#1}}
+\makeatother
+
+
+
+\hyphenation{block-chains} % Pour couper les mots en fin de ligne
+\usepackage[utf8]{inputenc}
+\usepackage{helvet} % Police
+\usepackage{geometry} % Gère les marges
+
+% Pour les formules mathématiques de la partie formalisme
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%COMMENTER ICI POUR ENLEVER LES MARGES PAR DEFAUT
+% \geometry{
+% 	left=16mm,
+% 	top=30mm,
+% 	right=16mm,
+% 	bottom=30mm
+% }
+
+\usepackage{color}
+\usepackage{xcolor} % Plus large palette de couleur
+
+\usepackage[absolute,overlay]{textpos} 
+\usepackage{graphicx}
+\usepackage{lipsum} 
+\usepackage{array} % Tableaux
+\usepackage{caption} % Légende des tableaux
+\usepackage{soul} % Souligner pour correction
+\usepackage{multicol} % Pour les colonnes dans les tableaux
+\setlength{\columnseprule}{0pt}
+\setlength\columnsep{10pt}
+\usepackage{mathpazo} % Police
+
+% Pour le résumé
+
+% Increase spacing between lines
+\usepackage{setspace} 
+% To justify text in texttt command
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
+
+\setstretch{1.1} % augmente légèrement l'espace interligne, pour aération du texte/
+
+\usepackage{listings} % Code XML des annexes
+
+% Couleurs pour les versions web ou pour impression
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+% Couleurs pour code
+\definecolor{codegreen}{rgb}{0.0,0.4,0.0}
+\definecolor{codepurple}{rgb}{0.5,0.0,0.35}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.97}
+
+% Definit XACML
+\lstdefinelanguage{XACML}
+{
+    morekeywords={PolicySet, Policy, Rule, Target, Condition, Apply, Function, Description, Match, AttributeValue, AttrValue, Action, ActionAttrDesignator, ActionMatch, AttributeDesignator, AllOf, AnyOf, AdviceExpressions, AttributeAssignmentExpression},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+}
+
+% Style pour XACML
+\lstset{
+    language=XACML,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{blue},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    backgroundcolor=\color{backcolour},
+    showstringspaces=false,
+    breaklines=true,
+    tabsize=4,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    numbers=left, 
+    stepnumber=1
+}
+
+% Pour les corrections
+
+\newcommand{\rul}[2][red]{\textcolor{#1}{\ul{#2}}}
+\newcommand{\cul}[2][blue]{\textcolor{#1}{\ul{#2}}}
+\newcommand{\sul}[2][green]{\textcolor{#1}{\ul{#2}}}
+\newcommand{\mul}[2][violet]{\textcolor{#1}{\ul{#2}}}
+
+\usepackage{enumitem}
+
+% Neutralisation des commentaires
+
+\renewcommand{\sul}[1][black]{\textcolor{#1}} 
+\renewcommand{\cul}[1][black]{\textcolor{#1}} 
+\renewcommand{\mul}[1][black]{\textcolor{#1}} 
+\renewcommand{\rul}[1][black]{\textcolor{#1}}
+ 
+\renewcommand{\st}[1][black]{\textcolor{#1}} 
+
+
+\usepackage{mdframed} % Cadre autour des objectifs
+ 
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor={black},citecolor={darkblue},urlcolor={black}}  
+  
+% For quote Ayn Rand
+\usepackage{csquotes}
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+
+\input{1ere}
+
+%-------------------------------------------------------------------------------
+\normalsize
+
+%-----------------------------------------------------------------
+
+\newpage \ \newpage
+
+\input{quote}
+
+\newpage \ \newpage
+
+%--------------------
+% \chapter*{Remerciements}
+% \input{thanks}
+% \newpage 
+%----------------------------------------------------------------------
+\chapter*{Abstract}
+\input{abstract}
+ 
+\newpage \ \newpage
+%-------------------------------------------------------------------------------
+
+\chapter*{Résumé}
+\input{abstract_fr}
+
+\newpage \ \newpage
+%--------------------------------------------------------------------------------
+\chapter*{Synopsis en français}
+\input{resume}
+
+\newpage \ \newpage
+
+%------------------------------------------------------------------------
+\dominitoc
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+\newpage \ \newpage
+\chapter{Introduction}
+\input{introduction.tex}
+
+%-------------------------------------------------------------------------------
+\newpage \ \newpage
+\chapter{\rul{State of the Art on Usage Control and Distributed Ledgers}}
+
+\label{C_state_of_the_art}
+\input{stateoftheart}
+\newpage \ \newpage
+%-------------------------------------------------------------------------------
+%\chapter[A Framework for Performance, Security and Privacy in the Internet of Things]{\rul{A Framework for Enhancing Performance, Security, and Privacy in the Internet of Things}}
+
+\chapter{\rul{A Framework for Enhancing Performance, Security, and Privacy in the Internet of Things}}
+\label{C_solving_trilemma}
+\input{ifip}
+
+%-------------------------------------------------------------------------------
+\newpage \ \newpage
+\chapter{Integration of Usage Control with Distributed Ledger Technologies}
+\label{C_integration}
+\input{integration}
+\newpage \ \newpage
+%--------------------------------------------------------------------------------
+
+\chapter{Modeling Distributed Data Usage Control}
+\label{C_formalism}
+\input{formalism}
+
+\newpage \ \newpage
+%----------------------------------------------------------------------
+\chapter{Conclusion and Future Works}
+\label{C_conclusion}
+\input{conclusion} 
+
+
+% \bibliographystyle{plain}
+%  \bibliographystyle{alpha-fr}
+\bibliographystyle{apalike}
+\bibliography{bib/bibliography,bib/blockchain,bib/privacy,bib/iot,bib/formalism} 
+
+
+
+%------------------------------------------------!-------------------------------
+
+\appendix
+
+\chapter{Glossary}
+\label{A_glossary}
+\input{glossary}
+
+\chapter{Publications}
+\label{A_Publications}
+\input{publications} 
+
+\chapter{Cryptocurrencies}
+\label{A_cryptocurrencies}
+\input{cryptocurrencies}
+
+\chapter{Usage control}
+\label{A_usage_control} 
+\input{usagecontrol}
+%-------------------------------------------------------------------------------
+\setstretch{1}
+\input{4eme}
+
+
+
+
+\end{document} 

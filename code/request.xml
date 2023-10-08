@@ -1,0 +1,15 @@
+    public static String createSimpleXACMLrequest(int nbIotas, String userAddress) {
+    	return "<Request xmlns=\"urn:oasis:names:tc:xacml:3.0:core:schema:wd-17\" CombinedDecision=\"false\" ReturnPolicyIdList=\"false\">\n"+
+                "<Attributes Category=\"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject\">\n" +
+                "<Attribute AttributeId=\"urn:oasis:names:tc:xacml:1.0:subject:subject-id\" IncludeInResult=\"true\">\n" +
+                "<AttributeValue DataType=\"http://www.w3.org/2001/XMLSchema#string\">" + userAddress +"</AttributeValue>\n" +
+                "</Attribute>\n" +
+                "</Attributes>\n" +
+    			"<Attributes Category=\"http://iotawucon/category\">\n" +
+                "<Attribute AttributeId=\"http://iotawucon/nbiotas\" IncludeInResult=\"true\">\n" +
+                "<AttributeValue DataType=\"http://www.w3.org/2001/XMLSchema#integer\">" + nbIotas + "</AttributeValue>\n" +
+                "</Attribute>\n" +
+                "</Attributes>\n" +
+                "</Request>";
+    }
+

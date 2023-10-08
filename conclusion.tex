@@ -1,0 +1,133 @@
+\minitoc
+
+
+This concluding chapter first summarizes the contributions of this thesis (Section \ref{S_summary}), before introducing the limitations of the presented works, notably concerning the key technologies used 
+in the different contributions (Section \ref{S_limits}). Finally, different research directions are provided, either to improve the existing work or to extend the contributions to solve other research issues (Section \ref{S_future_works}). 
+
+\section{Summary}
+\label{S_summary}
+
+Throughout this document, we proposed several contributions that addressed four different research objectives. These objectives fall within the general topic of privacy preservation, security and performance 
+in the Internet of Things, which are paramount for the nearing massive adoption of IoT devices. The contributions of this thesis can be summarized as follows. 
+A key aspect regarding these contributions is that they addressed these requirements altogether, i.e., performance, privacy and security simultaneously. Besides,
+both practical aspects, such as integration with performance tests (Section \ref{S_performance_evaluation}) and theoretical, formal ones (Chapter \ref{C_formalism})
+were presented in this work. These contributions are summarized as follows.
+
+\textbf{Framework for performance, privacy and security in the Internet of Things.} (\hyperref[obj:1]{\emph{Objective 1}}, \hyperref[obj:23]{\emph{Objective 2}}). 
+This first contribution is the design of a framework whose purpose is to address the privacy, security and
+performance requirements of the Internet of Things. The basis of the framework is the IOTA technology. The framework is centralized around the IOTA technology, used for its zero-fee transactions and 
+attractive metrics for the Internet of Things. Other components are also related to IOTA, such as IOTA Access to monitor physical access to the Internet of Things devices, such as cars or doors. A decentralized mixer 
+to obfuscate IOTA transactions is also part of the framework, as defined by Sarfraz \cite{Sarfraz2019}. Mixing was complemented with merge avoidance, to further improve the privacy of the users. Finally, usage control mechanisms are introduced so that users can monitor the use and dissemination of their data,
+by defining policies.
+
+\textbf{Integration of usage control with distributed ledgers.} (\hyperref[obj:23]{\emph{Objective 3}}).
+This contribution proposes to integrate usage control with distributed ledgers based on directed acyclic graphs (DAG), after an analysis of suitable distributed ledger technologies. Private blockchains (or DAGs) are also suitable, 
+but have limited scalability due to centralized governance, and were not selected for the experiments. The benefits of integration are to make both 
+the usage control system and the distributed ledger work in synergy: 1) the components of the usage control system contribute
+to the network security, by verifying the state of the ledger as a DAG node; 2) the usage control system processes the transaction data without intermediaries,
+which is faster and more reliable. 
+An implementation of usage control integration is proposed on IOTA. Performance tests are conducted on this implementation, showing approximately a 90\% decrease
+of the time needed to push transactions and make an access decision when the UCS is integrated.
+
+\textbf{Data usage control model for distributed systems.} (\hyperref[obj:4]{\emph{Objective 4}}). In the last contribution, we proposed an extended model for data usage 
+control in distributed systems. The need to define an all-encompassing model for distributed systems is motivated by their use in Internet of Things networks. To improve the existing model, we added dedicated functions
+and components dedicated to \emph{decentralized information flow control}. This enables users to define policies jointly, 
+removing the need for a centralized entity responsible for policy management. Decentralized information flow control 
+has seen recent improvements, notably because of current coding practices \cite{Liu2022}, which justifies its 
+introduction as a relevant, usable tool in distributed systems. The model is also complemented by 
+new functions considering the state of the individual entities of the network, as IoT networks 
+can be unreliable, intermittent, and subject to frequent connections and disconnections.
+
+\section{Limitations}
+\label{S_limits}
+There are several limitations in the thesis work that we discuss next, inherent to the technologies as part of the solutions such as IOTA, or due to validation aspects that could increase the confidence in the proposed solutions.
+
+\textbf{Limitations of IOTA.}
+IOTA is a key technology used in this thesis as a basis to address the research objectives, notably \hyperref[obj:1]{\emph{Objective 1}} (privacy-preserving zero-fee transactions), \hyperref[obj:23]{\emph{Objective 2}} (suitable distributed ledger for the IoT) and to a lesser extent \hyperref[obj:23]{\emph{Objective 3}} as DAG-based distributed ledger, including IOTA, are particularly fitted for integration (cf. Chapter \ref{C_integration}).
+The main benefits of using IOTA are to benefit from the properties provided by DAG-based distributed ledgers, including:
+\begin{enumerate}
+    \item zero-fee transactions with the removal of the miner, or fundamentally, by trading a financial incentive with a cost-saving incentive;
+    \item attractive metrics for IoT use cases, such as high transaction throughput;
+    \item involvement of resource-constrained IoT devices.
+\end{enumerate}
+
+Yet, these claims are partly inaccurate in the first version of IOTA. While transactions are actually zero-fee, current performance metrics are limited compared to the expected metrics. In theory, the more transactions in the network, the faster transactions are confirmed, but more transactions also create congestion. This impacts negatively the confirmation rate and confirmation time \cite{Dong2019}. The phenomenon is due to the coordinator, the central component in charge of validating transactions during the early stages of IOTA. The second version of IOTA 2.0 (Coordicide \cite{Popov2020}) is designed to remove this component which should provide the expected network metrics in IOTA. Yet, it is not possible to anticipate accurately the release of IOTA 2.0.
+
+Besides, the reliance of IOTA on a non-financial incentive could be troublesome in the future, as the IOTA network requires stable, full nodes to be reliable, while full nodes are expensive to run \cite{Dong2019}. The lack 
+of motivation may hinder the network's ability to properly grow in the future, which is required to achieve the claimed high throughput.
+
+\textbf{Evaluating the scalability of distributed ledgers.} Scalability has been identified as a key metric throughout this thesis work (cf. Section \ref{ss_performance_metrics}). Scalability is one of the expected benefits of decentralization, which was identified as 
+one of the two criteria of interest to determine integrability (cf. \ref{ss_integrability_criteria}). Nevertheless, as discussed in Section \ref{ss_performance_metrics}, scalability is complex to define in the first place, and requires handling any possible bottleneck. 
+Dong \emph{et al.} \cite{Dong2019} have proposed to evaluate scalability as "the changes in throughput and latency
+when increasing the number of nodes", using the \emph{confirmation rate}. The confirmation rate measures the number of transactions confirmed\footnote{\cul{A transaction is confirmed if it is referenced by a milestone from the coordinator in IOTA (1.0).}} in a second, which is related to both throughput and latency. The results of \cul{Dong \emph{et al.}'s} evaluation show that the confirmation 
+rate is at most 0.8tx.$s^{-1}$, much lower than IOTA's throughput. The Coordinator node of IOTA(1.0) is still a major obstacle to scalability considering the confirmation rate.
+
+\textbf{Adoption of usage control.} If IOTA is the main technology used to answer IoT requirements in terms of performance, usage control is its counterpart concerning privacy needs in this thesis work. 
+While it is a multipurpose technology with regard to the mitigation of privacy threats (cf. Section \ref{ss_mitigation}), it has several limitations preventing its adoption:
+
+\begin{itemize}
+    \item the complexity of implementing and managing UCON policies. UCON systems require detailed specification and configuration of access control rules, obligations, and conditions, which can be challenging to design and maintain, especially in large and dynamic systems. Additionally, UCON may face resistance or challenges in adoption due to compatibility issues with existing access control mechanisms and the need for integration with different components and platforms within an organization's infrastructure;
+    \item the policy enforcement points are distributed on the monitored devices, which creates risks to the security and privacy of users. While these risks are usually mitigated using a trusted execution environment, this solution has shortcomings as the TEE itself may not be secured;
+    \item the potential impact on system performance. Usage control systems involve additional computational overhead to evaluate and enforce access control policies at runtime, which may be limiting in several use cases. 
+\end{itemize}
+
+
+\section{Future works}
+\label{S_future_works}
+In this section, different prospects following this thesis work are developed. First, different works that could complete the proposed contribution are proposed. Additionally, orthogonal research topics are mentioned, that were not directly addressed in this work but which could benefit from its findings.
+ 
+\subsection{Automatic generation of XACML policies for testing}
+The contributions of this thesis often required to evaluate usage control policies, written in the XACML language. For instance, we assessed the 
+time needed to evaluate an XACML policy in Chapter \ref{C_integration}, which is actually lightweight compared to other system and network calls.
+However, defining XACML policies is a cumbersome process, which hinders the adoption of usage control in practice. First, the clear and exhaustive  
+definition of the policies themselves can be difficult, including for testing purposes.
+Besides, the translation from high-level policies to XACML policies is also tedious to do by hand (cf. Listing \ref{listing:XACML_policy}).
+ 
+Several works in the literature have been developing tools to make the generation of XACML policies more user-friendly. Bertolino \emph{et al.} have proposed two different ways 
+to derive XACML requests automatically for policy testing \cite{Bertolino2012}. The authors also underline the impossibility of manual specification of a set of test cases in XACML testing. 
+Similarly, Xu \emph{et al.} use \emph{mutation-based tests} where access requests are derived from an original policy \cite{Xu2020}. While the same methodology was used in the presented thesis, the derivation was very basic and consisted 
+of value substitution. Future works may include tests based on rigorous policy derivation.
+
+% \textbf{Usable privacy.} Usable privacy by making usage control more user-friendly, e.g., with high-level understandable definitions or user-friendly interfaces, is poorly addressed by the literature. However,
+% the literature has proposed several XACML policy editors such as UMU-XACML or ALFA \cite{Nergaard2015} to enable manual policy definitions without 
+% writing policies from scratch in the XML language.
+
+
+\subsection{Model checking on usage control model} 
+For the \emph{Contribution 3}, we proposed an extension of the state-of-the-art usage control model in distributed systems. However, the model can have flaws in its definition, including the existing model we used as a basis. Model-checking tools exist to ensure the model's validity.
+
+ TLA+ is a formal specification language developed by Leslie Lamport. It is used for designing, modeling, documentation, and verification of programs, especially concurrent systems and distributed systems \cite{Lamport1992}. TLC is a model checker designed for TLA+ that can be used to detect errors in TLA+ specifications.
+ The validation of the model could be of interest in particular when using the model in well-defined use cases. Besides, some functions such as the \emph{conflict} function, responsible for detecting collisions between the labels of data and their containers, might have side effects and not be doable in practice, e.g., due to communication costs. An implementation with performance testing could exclude this risk and would fit the research objective (\hyperref[obj:56]{\emph{Objective 6}}) regarding validation using a proof of concept. 
+ 
+\subsection{IOTA-based privacy-preserving machine learning}
+ The Internet of Things can leverage advanced machine learning algorithms for its applications \cite{Ali2021}. Machine learning (ML) and deep learning (DL) algorithms have significantly been improved and used in diverse applications, including computer vision, natural language processing and automated speech recognition. Several Internet of Things systems, such as autonomous vehicles, UAVs, drones or security robots, heavily rely on ML/DL-based technologies \cite{Jiang2022}. However, considering the huge quantity of data stored at a central cloud server, adopting centralized machine learning algorithms is not a viable option due to computation cost and privacy leakage issues. Yet, leveraging distributed data for application purposes is still a challenging task \cite{Ali2021}. To address this challenge, \emph{federated learning} (FL) is a promising solution that distributes learning to the end devices without sharing personal data with the central server. In federated learning, the central server only orchestrates the learning process, and only the updates of model parameters are shared between end devices and the central orchestrator. Therefore, the central server does not need access to actual data to learn, reducing privacy risks.
+ 
+ \textbf{Blockchain-based federated learning.} Federated learning being distributed by nature, blockchain-enabled federated learning has been gathering significant attention, which is shown by frequent and recent surveys \cite{Lee2021, Issa2023, Qu2023} or systematic literature reviews \cite{Dongkun2021, Qammar2023}. Blockchains are leveraged in federated learning for the following reasons:
+ 
+ \begin{itemize}
+     \item \emph{smart contracts} can be used to coordinate federated learning. Smart contracts can validate node contributions, compute the global model automatically, record the performance of nodes on the ledger and provide incentives to nodes based on performance \cite{Issa2023};
+     \item improving security and privacy by removing the \rul{need for a} central server \cite{Issa2023}, mitigating the \emph{single point of failure} threat. \rul{The global model can be aggregated by delegates from the local models, then, put on the distributed ledger. In return, nodes can download the global model and use it to train their local models} \cite{Yunlong2020};
+     \item enhanced auditability and accountability of the nodes \cite{Issa2023}.
+ \end{itemize}
+ 
+ Yet, federated learning using blockchains still has to address several challenges to preserve privacy and to handle the Internet of Things constraints, e.g., low computation and storage capabilities \cite{Issa2023}. These challenges are very similar to what has been addressed in Chapter \ref{C_solving_trilemma} and Chapter \ref{C_integration}) and
+ most of the research objectives of this paper (\hyperref[obj:23]{\emph{Objective 2}}, and indirectly \hyperref[obj:23]{\emph{Objective 3}}) but integrating federated learning instead of usage control). The results of this thesis work could also be extended to federated learning.
+ 
+ \textbf{IOTA-based federated learning.} Distributed ledgers based on DAGs are not mentioned in the literature as a potential solution outperforming blockchains for federated learning \cite{Issa2023, Qu2023}. To my knowledge, only one research article from Lu \emph{et al.} \cite{Yunlong2020} suggests the use of a DAG-based distributed ledger combined with a private blockchain for secure data sharing and
+ federated learning. \rul{The private blockchain is used for the global aggregation of the models and the DAG is responsible for asynchronous local training.} In the authors' setting, both the DAG and the blockchain are permissioned, which prevents its adoption in large-scale networks. IOTA could be leveraged as it can incorporate Internet of Things devices into its network efficiently, which is not the case of blockchains in general (cf. Section \ref{S_distributed_ledgers}).
+
+\subsection{IOTA for supporting Self-Sovereign Identities}
+\label{ss_ssi}
+ 
+\cul{Self-Sovereign Identity (SSI) is an approach in which subjects
+are in full control of their own digital identities} \cite{Fedrecheski2020}. 
+\cul{SSI contrasts with current digital
+identity solutions that are centralized which creates privacy and security issues} \cite{Fedrecheski2020}.
+
+\cul{Self-Sovereign Identities have several benefits to the Internet of Things. In particular, SSIs are \emph{owner-centric} and enable users to be the root of trust of their devices instead of a third party. The identities of users and their devices are stored locally on their own devices and are disclosed selectively by the users themselves, improving privacy in contrast with centralized identity management. Removing the need for a third party to manage identities increases the decentralization in the network and removes a single point of failure from the network} \cite{Fedrecheski2020}. 
+
+\cul{Yet, the adoption of the SSI paradigm in IoT networks faces several hurdles, both technical and non-technical e.g., standardization} \cite{Fedrecheski2020}. \cul{The technical aspects include the limitations of \emph{constrained devices}. To implement Self-Sovereign Identities, the devices must be able to run asymmetric cryptography and handle the communication overhead}.
+%     \item \emph{traceability}: global tracking should be avoided and is often not possible without a central authority;
+% \end{itemize}
+
+\cul{The IOTA technology, due to its ability to integrate constrained devices into its consensus and its network, is a promising technology to address the first technical limit. In particular, IOTA gives the possibility to deploy nodes to the users, to which the computation-intensive aspects can be delegated. Existing works have proposed to use IOTA as the basis of a SSI system for the Internet of Things devices} \cite{Gebresilassie2020} \cul{and IOTA itself has a module to generate decentralized identities} \cite{IOTA2020}. Gebresilassie \emph{et al.} propose to use DAGs as building blocks for a DAG node identity management system, in particular to manage node reputation. However, the contribution remains very elusive on many key technical aspects such as conditions for enrolling nodes in the SSI system, desired security properties, transaction content and security analysis which still leaves many unknowns before a possible implementation within a proof of concept.
