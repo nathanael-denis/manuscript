@@ -23,4 +23,5 @@ en cas de récupération à votre propre manuscrit.
 possède un certain nombre d'extensions (Github copilot (gratuit pour étudiants)
 et Grammarly en particulier) qui peuvent faire gagner beaucoup de temps
 dans la rédaction et surtout dans la compilation!
--Pour les images, j'ai utilisé en grande partie draw.io
+
+- Pour les images, j'ai utilisé en grande partie draw.io
